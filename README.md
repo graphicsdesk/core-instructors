@@ -1,6 +1,6 @@
 Analyzing the makeup of Core instructors.
 
-## Setup
+## Data
 
 In the `data/` folder, there are 3 files: 
 * `facultyandstaff-110119.json`, exported from the directory scraper.
