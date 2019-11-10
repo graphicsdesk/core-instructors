@@ -30,8 +30,7 @@ all_courses %>%
   ) %>% 
   #filter(instructor_type == "UNCAUGHT") %>%
   #View()
-  count(instructor_type, subject) %>% 
-  group_by(subject) %>% 
+  count(instructor_type, subject) %>%
   mutate(
     pct = n / sum(n)
   ) %>% 
