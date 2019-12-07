@@ -16,7 +16,7 @@ all_courses <- fromJSON("../data/all_courses.json")
 
 all_courses %>% 
   rename(uni = instructor_uni, course_title = title) %>% 
-  merge(people, by = "uni") %>% 
+  merge(people, by = "uni") %>% View()
   mutate(
     instructor_type = case_when(
       grepl("Lecturer", title) ~ "Nontenured",
@@ -28,14 +28,14 @@ all_courses %>%
       TRUE ~ "UNCAUGHT"
     )
   ) %>% 
-  #filter(instructor_type == "UNCAUGHT") %>%
-  #View()
-  count(instructor_type, subject) %>%
+  count(instructor_type) %>% 
+  # filter(instructor_type == "UNCAUGHT") %>%
+  # View()
+  # count(instructor_type, subject) %>%
   mutate(
     pct = n / sum(n)
   ) %>% 
   ggplot(aes(instructor_type, pct)) +
   geom_col() +
-  coord_flip() +
-  facet_wrap(~ subject)
+  coord_flip()
 
